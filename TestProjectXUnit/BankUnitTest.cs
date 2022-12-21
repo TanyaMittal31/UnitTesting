@@ -1,10 +1,9 @@
-using Bank;
-using System;
-using Xunit;
 
-namespace BankXUnitTests
+using Bank;
+
+namespace TestProjectXUnit
 {
-    public class BankAccountTests
+    public class BankUnitTest
     {
         [Fact]
         public void Adding_Funds_Updates_Balance()
