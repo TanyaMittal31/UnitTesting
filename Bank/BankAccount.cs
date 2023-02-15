@@ -2,9 +2,6 @@
 
 namespace Bank
 {
-    /// <summary>
-    /// Bank account demo class.
-    /// </summary>
     public class BankAccount
     {
         private double balance;
@@ -23,40 +20,40 @@ namespace Bank
             get { return balance; }
         }
 
-        public void Add(double amount)
+        public void AddMoney(double cash)
         {
-            if (amount < 0)
+            if (cash < 0)
             {
-                throw new ArgumentOutOfRangeException(nameof(amount));
+                throw new ArgumentOutOfRangeException(nameof(cash));
             }
 
-            balance += amount;
+            balance += cash;
         }
 
-        public void Withdraw(double amount)
+        public void WithdrawMoney(double cash)
         {
-            if (amount > balance)
+            if (cash > balance)
             {
-                throw new ArgumentOutOfRangeException(nameof(amount));
+                throw new ArgumentOutOfRangeException(nameof(cash));
             }
 
-            if (amount < 0)
+            if (cash < 0)
             {
-                throw new ArgumentOutOfRangeException(nameof(amount));
+                throw new ArgumentOutOfRangeException(nameof(cash));
             }
 
-            balance -= amount;
+            balance -= cash;
         }
 
-        public void TransferFundsTo(BankAccount otherAccount, double amount)
+        public void TransferFundsTo(BankAccount otherAccount, double cash)
         {
             if (otherAccount is null)
             {
                 throw new ArgumentNullException(nameof(otherAccount));
             }
 
-            Withdraw(amount);
-            otherAccount.Add(amount);
+            WithdrawMoney(cash);
+            otherAccount.AddMoney(cash);
         }
     }
 }

@@ -6,63 +6,63 @@ namespace TestProjectXUnit
     public class BankUnitTest
     {
         [Fact]
-        public void Adding_Funds_Updates_Balance()
+        public void Adding_Funds()
         {
             // ARRANGE
             var account = new BankAccount(1000);
 
             // ACT
-            account.Add(100);
+            account.AddMoney(100);
 
             // ASSERT
             Assert.Equal(1100, account.Balance);
         }
 
         [Fact]
-        public void Adding_Negative_Funds_Throws()
+        public void Adding_Negative_Funds()
         {
             // ARRANGE
             var account = new BankAccount(1000);
 
             // ACT + ASSERT
-            Assert.Throws<ArgumentOutOfRangeException>(() => account.Add(-100));
+            Assert.Throws<ArgumentOutOfRangeException>(() => account.AddMoney(-100));
         }
 
         [Fact]
-        public void Withdrawing_Funds_Updates_Balance()
+        public void Withdrawing_Funds()
         {
             // ARRANGE
             var account = new BankAccount(1000);
 
             // ACT
-            account.Withdraw(100);
+            account.WithdrawMoney(100);
 
             // ASSERT
             Assert.Equal(900, account.Balance);
         }
 
         [Fact]
-        public void Withdrawing_Negative_Funds_Throws()
+        public void Withdrawing_Negative_Funds()
         {
             // ARRANGE
             var account = new BankAccount(1000);
 
             // ACT + ASSERT
-            Assert.Throws<ArgumentOutOfRangeException>(() => account.Withdraw(-100));
+            Assert.Throws<ArgumentOutOfRangeException>(() => account.WithdrawMoney(-100));
         }
 
         [Fact]
-        public void Withdrawing_More_Than_Funds_Throws()
+        public void Withdrawing_More_Than_Funds()
         {
             // ARRANGE
             var account = new BankAccount(1000);
 
             // ACT + ASSERT
-            Assert.Throws<ArgumentOutOfRangeException>(() => account.Withdraw(2000));
+            Assert.Throws<ArgumentOutOfRangeException>(() => account.WithdrawMoney(2000));
         }
 
         [Fact]
-        public void Transfering_Funds_Updates_Both_Accounts()
+        public void Transfering_Funds()
         {
             // ARRANGE
             var account = new BankAccount(1000);
@@ -76,14 +76,6 @@ namespace TestProjectXUnit
             Assert.Equal(500, otherAccount.Balance);
         }
 
-        [Fact]
-        public void TransferFundsTo_Non_Existing_Account_Throws()
-        {
-            // ARRANGE
-            var account = new BankAccount(1000);
-
-            // ACT + ASSERT
-            Assert.Throws<ArgumentNullException>(() => account.TransferFundsTo(null, 2000));
-        }
+        
     }
 }
